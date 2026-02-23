@@ -343,7 +343,7 @@ fig.suptitle('Figure 2e.  Chou-Talalay Combination Index Analysis — Lovastatin
              fontsize=15, fontweight='bold', y=1.03, color='#0F172A')
 
 fig.tight_layout(rect=[0, 0, 1, 0.96])
-fig.savefig('/home/claude/gjs_panel5_chou_talalay_v2.png', dpi=300, bbox_inches='tight',
+fig.savefig('../figures/Figure2e_Chou_Talalay_CI.png', dpi=300, bbox_inches='tight',
             facecolor='#FAFBFC', edgecolor='none')
 plt.close(fig)
 print("Panel 2e v2: Chou-Talalay CI (corrected) — done")

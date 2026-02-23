@@ -116,7 +116,7 @@ ax1.text(4.6, 40, 'Therapeutic\nwindow', fontsize=8, color=COLOR_GREEN,
          ha='center', fontstyle='italic', fontweight='bold')
 
 fig1.tight_layout()
-fig1.savefig('/home/claude/gjs_panel1_2d_lines.png', dpi=300, bbox_inches='tight',
+fig1.savefig('gjs_panel1_2d_lines.png', dpi=300, bbox_inches='tight',
              facecolor='#FAFBFC', edgecolor='none')
 plt.close(fig1)
 print("Panel 1: 2D lines — done")
@@ -157,7 +157,7 @@ ax2.view_init(elev=25, azim=225)
 cbar = fig2.colorbar(surf, ax=ax2, shrink=0.55, pad=0.08, label='Threshold')
 
 fig2.tight_layout()
-fig2.savefig('/home/claude/gjs_panel2_3d_surface.png', dpi=300, bbox_inches='tight',
+fig2.savefig('gjs_panel2_3d_surface.png', dpi=300, bbox_inches='tight',
              facecolor='#FAFBFC', edgecolor='none')
 plt.close(fig2)
 print("Panel 2: 3D surface — done")
@@ -231,7 +231,7 @@ ax3.set_title('GJS Threshold Heatmap: Dual-Lock Synergy Zone\n'
               fontweight='bold')
 
 fig3.tight_layout()
-fig3.savefig('/home/claude/gjs_panel3_heatmap.png', dpi=300, bbox_inches='tight',
+fig3.savefig('gjs_panel3_heatmap.png', dpi=300, bbox_inches='tight',
              facecolor='#FAFBFC', edgecolor='none')
 plt.close(fig3)
 print("Panel 3: heatmap — done")
@@ -296,7 +296,7 @@ ax4.spines['top'].set_visible(False)
 ax4.spines['right'].set_visible(False)
 
 fig4.tight_layout()
-fig4.savefig('/home/claude/gjs_panel4_synergy_bars.png', dpi=300, bbox_inches='tight',
+fig4.savefig('gjs_panel4_synergy_bars.png', dpi=300, bbox_inches='tight',
              facecolor='#FAFBFC', edgecolor='none')
 plt.close(fig4)
 print("Panel 4: synergy bars — done")
@@ -307,10 +307,10 @@ print("Panel 4: synergy bars — done")
 from PIL import Image
 
 panels = [
-    Image.open('/home/claude/gjs_panel1_2d_lines.png'),
-    Image.open('/home/claude/gjs_panel2_3d_surface.png'),
-    Image.open('/home/claude/gjs_panel3_heatmap.png'),
-    Image.open('/home/claude/gjs_panel4_synergy_bars.png'),
+    Image.open('gjs_panel1_2d_lines.png'),
+    Image.open('gjs_panel2_3d_surface.png'),
+    Image.open('gjs_panel3_heatmap.png'),
+    Image.open('gjs_panel4_synergy_bars.png'),
 ]
 
 # Get max dimensions
@@ -342,16 +342,16 @@ ax_title.text(0.5, 0.5,
               transform=ax_title.transAxes, ha='center', va='center',
               fontsize=16, fontweight='bold', color='#0F172A',
               fontfamily='serif')
-fig_title.savefig('/home/claude/title_bar.png', dpi=300, bbox_inches='tight',
+fig_title.savefig('title_bar.png', dpi=300, bbox_inches='tight',
                   facecolor='#FAFBFC', edgecolor='none', transparent=False)
 plt.close(fig_title)
 
-title_img = Image.open('/home/claude/title_bar.png')
+title_img = Image.open('title_bar.png')
 # Center title
 tx = (grid_w - title_img.width) // 2
 composite.paste(title_img, (tx, 5))
 
-composite.save('/home/claude/Figure2_GJS_Simulation_4Panel.png')
+composite.save('../figures/Figure2_GJS_Simulation_4Panel.png')
 print(f"\nComposite: {composite.width}×{composite.height} px")
 
 # ══════════════════════════════════════════════════════════════
