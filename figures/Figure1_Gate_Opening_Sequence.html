@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: white; display: flex; justify-content: center; padding: 10px; }
+  .figure-container { width: 1600px; }
+</style>
+</head>
+<body>
+<div class="figure-container">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 850" width="1600" height="850">
+  <defs>
+    <!-- Panel backgrounds -->
+    <linearGradient id="panelABg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F1F5F9"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+    <linearGradient id="panelBBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFBEB"/>
+      <stop offset="100%" stop-color="#FEF3C7"/>
+    </linearGradient>
+    <linearGradient id="panelCBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFF1F2"/>
+      <stop offset="100%" stop-color="#FFE4E6"/>
+    </linearGradient>
+
+    <!-- Lipid bilayer - rigid (amber/brown tones, tightly packed) -->
+    <linearGradient id="bilayerRigidOuter" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#D97706" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#B45309" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="bilayerRigidInner" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FCD34D" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#FCD34D" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="bilayerRigidLower" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#B45309" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#D97706" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <!-- Lipid bilayer - fluid (green tones, loosely packed) -->
+    <linearGradient id="bilayerFluidOuter" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#22C55E" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#16A34A" stop-opacity="0.85"/>
+    </linearGradient>
+    <linearGradient id="bilayerFluidInner" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#86EFAC" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#86EFAC" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="bilayerFluidLower" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#16A34A" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#22C55E" stop-opacity="0.75"/>
+    </linearGradient>
+
+    <!-- VDAC barrels -->
+    <linearGradient id="vdacShut" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="50%" stop-color="#64748B"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+    <linearGradient id="vdacOpen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#166534"/>
+      <stop offset="50%" stop-color="#22C55E"/>
+      <stop offset="100%" stop-color="#166534"/>
+    </linearGradient>
+
+    <!-- Drug gradients -->
+    <linearGradient id="lovaGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <linearGradient id="botenGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#C084FC"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+
+    <!-- IFN radial glow -->
+    <radialGradient id="ifnGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FB923C" stop-opacity="0.8"/>
+      <stop offset="40%" stop-color="#F97316" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#F97316" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Tumor death glow -->
+    <radialGradient id="deathGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FCA5A5" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#FCA5A5" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Filters -->
+    <filter id="drop">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.12"/>
+    </filter>
+    <filter id="dropLight">
+      <feDropShadow dx="0.5" dy="1" stdDeviation="1.5" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="bigGlow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Arrow markers -->
+    <marker id="aD" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="#1E293B"/></marker>
+    <marker id="aG" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="#16A34A"/></marker>
+    <marker id="aB" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="#1D4ED8"/></marker>
+    <marker id="aP" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="#7C3AED"/></marker>
+    <marker id="aO" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="#EA580C"/></marker>
+    <marker id="aR" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="#DC2626"/></marker>
+
+    <!-- Cholesterol circles for rigid membrane -->
+    <pattern id="cholRigid" x="0" y="0" width="9" height="9" patternUnits="userSpaceOnUse">
+      <circle cx="4.5" cy="4.5" r="3" fill="#FCD34D" opacity="0.55"/>
+    </pattern>
+    <!-- Sparser cholesterol for fluid membrane -->
+    <pattern id="cholSparse" x="0" y="0" width="18" height="18" patternUnits="userSpaceOnUse">
+      <circle cx="9" cy="9" r="2" fill="#FCD34D" opacity="0.25"/>
+    </pattern>
+  </defs>
+
+  <!-- Master background -->
+  <rect width="1600" height="850" fill="#FAFBFC"/>
+
+  <!-- Title bar -->
+  <rect x="0" y="0" width="1600" height="54" fill="#0F172A"/>
+  <text x="800" y="23" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="18" fill="white" font-weight="bold" letter-spacing="0.5">Figure 1</text>
+  <text x="800" y="44" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12" fill="#94A3B8" letter-spacing="0.3">The Gate-Opening Therapeutic Sequence for Microsatellite-Stable Colorectal Cancer</text>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PANEL A: THE TRIPLY-LOCKED GATE
+       ═══════════════════════════════════════════════════════════ -->
+  <g transform="translate(16, 66)">
+    <rect x="0" y="0" width="500" height="710" rx="8" fill="url(#panelABg)" stroke="#CBD5E1" stroke-width="1"/>
+    <!-- Header -->
+    <rect x="0" y="0" width="500" height="44" rx="8" fill="#334155"/>
+    <rect x="0" y="22" width="500" height="22" fill="#334155"/>
+    <circle cx="28" cy="22" r="13" fill="#475569"/>
+    <text x="28" y="27" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="white" font-weight="bold">A</text>
+    <text x="56" y="28" font-family="Georgia, serif" font-size="14" fill="#E2E8F0" font-weight="bold">The Triply-Locked Gate</text>
+    <text x="430" y="28" font-family="Georgia, serif" font-size="10" fill="#64748B" font-style="italic">untreated</text>
+
+    <!-- Cold TME zone -->
+    <rect x="16" y="56" width="468" height="32" rx="6" fill="#DBEAFE" opacity="0.6"/>
+    <text x="250" y="77" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#1E40AF" letter-spacing="3" font-weight="bold">COLD TUMOR MICROENVIRONMENT</text>
+
+    <!-- Immune cells (ghosted) -->
+    <g transform="translate(85, 135)" opacity="0.4">
+      <circle cx="0" cy="0" r="26" fill="#DBEAFE" stroke="#93C5FD" stroke-width="2"/>
+      <text x="0" y="-4" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#1E40AF" font-weight="bold">CD8+</text>
+      <text x="0" y="10" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#3B82F6">exhausted</text>
+    </g>
+    <g transform="translate(175, 150)" opacity="0.5">
+      <circle cx="0" cy="0" r="20" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="2"/>
+      <text x="0" y="-2" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#991B1B" font-weight="bold">Treg</text>
+      <text x="0" y="10" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#DC2626">suppressing</text>
+    </g>
+
+    <!-- Silent signal boxes -->
+    <g transform="translate(345, 118)">
+      <rect x="-60" y="-14" width="120" height="28" rx="14" fill="white" stroke="#D1D5DB" stroke-width="1"/>
+      <text x="0" y="4" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#9CA3AF">No IFN-β signal</text>
+    </g>
+    <g transform="translate(345, 158)">
+      <rect x="-60" y="-14" width="120" height="28" rx="14" fill="white" stroke="#D1D5DB" stroke-width="1"/>
+      <text x="0" y="4" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#9CA3AF">cGAS-STING silent</text>
+    </g>
+
+    <!-- OMM LABEL -->
+    <text x="250" y="210" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#92400E" font-weight="bold" letter-spacing="0.5">OUTER MITOCHONDRIAL MEMBRANE</text>
+    <text x="250" y="224" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#B45309" font-style="italic">Rigid — cholesterol-loaded lipid annulus</text>
+
+    <!-- ═══ LIPID BILAYER (rigid) ═══ -->
+    <!-- Outer leaflet -->
+    <rect x="40" y="237" width="420" height="22" rx="3" fill="url(#bilayerRigidOuter)"/>
+    <!-- Hydrophobic core -->
+    <rect x="40" y="259" width="420" height="16" rx="0" fill="url(#bilayerRigidInner)"/>
+    <!-- Inner leaflet -->
+    <rect x="40" y="275" width="420" height="22" rx="3" fill="url(#bilayerRigidLower)"/>
+    <!-- Cholesterol crystals embedded -->
+    <rect x="40" y="237" width="420" height="60" rx="3" fill="url(#cholRigid)" opacity="0.35"/>
+
+    <!-- Lipid head groups (circles along top/bottom of bilayer) -->
+    <g opacity="0.6">
+      <!-- Top leaflet heads -->
+      <circle cx="55" cy="240" r="4" fill="#FBBF24"/><circle cx="68" cy="238" r="4" fill="#FBBF24"/>
+      <circle cx="81" cy="240" r="4" fill="#FBBF24"/><circle cx="94" cy="238" r="4" fill="#FBBF24"/>
+      <circle cx="107" cy="240" r="4" fill="#FBBF24"/><circle cx="120" cy="238" r="4" fill="#FBBF24"/>
+      <circle cx="133" cy="240" r="4" fill="#FBBF24"/><circle cx="146" cy="238" r="4" fill="#FBBF24"/>
+      <!-- skip VDAC region -->
+      <circle cx="350" cy="240" r="4" fill="#FBBF24"/><circle cx="363" cy="238" r="4" fill="#FBBF24"/>
+      <circle cx="376" cy="240" r="4" fill="#FBBF24"/><circle cx="389" cy="238" r="4" fill="#FBBF24"/>
+      <circle cx="402" cy="240" r="4" fill="#FBBF24"/><circle cx="415" cy="238" r="4" fill="#FBBF24"/>
+      <circle cx="428" cy="240" r="4" fill="#FBBF24"/><circle cx="441" cy="238" r="4" fill="#FBBF24"/>
+      <!-- Bottom leaflet heads -->
+      <circle cx="55" cy="295" r="4" fill="#FBBF24"/><circle cx="68" cy="297" r="4" fill="#FBBF24"/>
+      <circle cx="81" cy="295" r="4" fill="#FBBF24"/><circle cx="94" cy="297" r="4" fill="#FBBF24"/>
+      <circle cx="107" cy="295" r="4" fill="#FBBF24"/><circle cx="120" cy="297" r="4" fill="#FBBF24"/>
+      <circle cx="133" cy="295" r="4" fill="#FBBF24"/><circle cx="146" cy="297" r="4" fill="#FBBF24"/>
+      <circle cx="350" cy="295" r="4" fill="#FBBF24"/><circle cx="363" cy="297" r="4" fill="#FBBF24"/>
+      <circle cx="376" cy="295" r="4" fill="#FBBF24"/><circle cx="389" cy="297" r="4" fill="#FBBF24"/>
+      <circle cx="402" cy="295" r="4" fill="#FBBF24"/><circle cx="415" cy="297" r="4" fill="#FBBF24"/>
+      <circle cx="428" cy="295" r="4" fill="#FBBF24"/><circle cx="441" cy="297" r="4" fill="#FBBF24"/>
+    </g>
+
+    <!-- ═══ VDAC1 (monomer — channel shut) ═══ -->
+    <g transform="translate(168, 232)" filter="url(#drop)">
+      <rect x="0" y="0" width="164" height="68" rx="8" fill="url(#vdacShut)" stroke="#1E293B" stroke-width="2.5"/>
+      <!-- Dark interior = shut -->
+      <rect x="18" y="8" width="128" height="52" rx="4" fill="#0F172A" opacity="0.75"/>
+      <text x="82" y="30" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" font-size="18" fill="#E2E8F0" font-weight="bold">VDAC1</text>
+      <text x="82" y="46" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#94A3B8">monomer</text>
+      <text x="82" y="60" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#F87171" font-weight="bold">GATE SHUT</text>
+    </g>
+
+    <!-- ═══ THREE LOCKS ═══ -->
+    <!-- Lock 1: HK-II (left of VDAC) -->
+    <g transform="translate(108, 240)" filter="url(#drop)">
+      <rect x="0" y="0" width="56" height="50" rx="8" fill="#DC2626" stroke="#991B1B" stroke-width="1.5"/>
+      <text x="28" y="22" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="white" font-weight="bold">HK-II</text>
+      <text x="28" y="36" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#FECACA">Lock 1</text>
+      <circle cx="50" cy="8" r="8" fill="#7F1D1D" stroke="#FECACA" stroke-width="1"/>
+      <text x="50" y="12" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#FECACA" font-weight="bold">✕</text>
+    </g>
+    <!-- Lock 2: Bcl-xL (right of VDAC) -->
+    <g transform="translate(336, 240)" filter="url(#drop)">
+      <rect x="0" y="0" width="56" height="50" rx="8" fill="#EA580C" stroke="#9A3412" stroke-width="1.5"/>
+      <text x="28" y="22" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="white" font-weight="bold">Bcl-xL</text>
+      <text x="28" y="36" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#FED7AA">Lock 2</text>
+      <circle cx="50" cy="8" r="8" fill="#7C2D12" stroke="#FED7AA" stroke-width="1"/>
+      <text x="50" y="12" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#FED7AA" font-weight="bold">✕</text>
+    </g>
+    <!-- Lock 3: [Chol]/[CL] (below VDAC) -->
+    <g transform="translate(192, 310)" filter="url(#drop)">
+      <rect x="0" y="0" width="116" height="38" rx="8" fill="#D97706" stroke="#92400E" stroke-width="1.5"/>
+      <text x="58" y="18" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="white" font-weight="bold">[Chol]/[CL] ↑</text>
+      <text x="58" y="32" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#FDE68A">Lock 3 — lipid annulus</text>
+      <circle cx="110" cy="8" r="8" fill="#78350F" stroke="#FDE68A" stroke-width="1"/>
+      <text x="110" y="12" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#FDE68A" font-weight="bold">✕</text>
+    </g>
+
+    <!-- mtDNA contained -->
+    <g transform="translate(215, 385)">
+      <ellipse cx="35" cy="22" rx="55" ry="28" fill="#F0FDF4" stroke="#86EFAC" stroke-width="2" stroke-dasharray="5,3"/>
+      <!-- Double helix suggestion -->
+      <path d="M10,12 Q20,5 30,12 Q40,19 50,12" stroke="#22C55E" stroke-width="1.5" fill="none" opacity="0.5"/>
+      <path d="M10,22 Q20,29 30,22 Q40,15 50,22" stroke="#22C55E" stroke-width="1.5" fill="none" opacity="0.5"/>
+      <text x="35" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#166534" font-weight="bold">mtDNA</text>
+      <text x="35" y="34" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#16A34A">contained</text>
+    </g>
+    <text x="250" y="460" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#6B7280" font-style="italic">mitochondrial matrix</text>
+
+    <!-- GJS equation -->
+    <g transform="translate(250, 510)" filter="url(#dropLight)">
+      <rect x="-218" y="-30" width="436" height="60" rx="8" fill="white" stroke="#CBD5E1" stroke-width="1"/>
+      <text x="0" y="-8" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#0F172A" font-weight="bold">Threshold = K / [(1-f_HKII)(1-f_BclxL)] × [Chol]/[CL]</text>
+      <text x="0" y="14" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#DC2626" font-weight="bold">All three terms elevated → gate jammed shut</text>
+    </g>
+
+    <!-- Summary -->
+    <g transform="translate(250, 610)">
+      <rect x="-200" y="-40" width="400" height="90" rx="10" fill="white" opacity="0.6"/>
+      <text x="0" y="-16" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#0F172A" font-weight="bold">Untreated MSS CRC</text>
+      <text x="0" y="4" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#475569">Triply locked. No mtDNA escape.</text>
+      <text x="0" y="22" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#475569">No innate alarm. Immune-invisible.</text>
+      <text x="0" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#64748B" font-style="italic">Checkpoint inhibitors fail here.</text>
+    </g>
+  </g>
+
+  <!-- ═══ TRANSITION ARROW A→B ═══ -->
+  <g transform="translate(524, 430)">
+    <rect x="-6" y="-24" width="40" height="48" rx="8" fill="#0F172A" opacity="0.08"/>
+    <polygon points="2,-16 26,0 2,16" fill="#334155" opacity="0.6"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PANEL B: LOVASTATIN OPENS THE GATE
+       ═══════════════════════════════════════════════════════════ -->
+  <g transform="translate(550, 66)">
+    <rect x="0" y="0" width="500" height="710" rx="8" fill="url(#panelBBg)" stroke="#FBBF24" stroke-width="1"/>
+    <rect x="0" y="0" width="500" height="44" rx="8" fill="#92400E"/>
+    <rect x="0" y="22" width="500" height="22" fill="#92400E"/>
+    <circle cx="28" cy="22" r="13" fill="#B45309"/>
+    <text x="28" y="27" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="white" font-weight="bold">B</text>
+    <text x="56" y="28" font-family="Georgia, serif" font-size="14" fill="#FDE68A" font-weight="bold">Lovastatin Opens the Gate</text>
+    <text x="420" y="28" font-family="Georgia, serif" font-size="10" fill="#D97706" font-style="italic">gate-opener</text>
+
+    <!-- Primed TME -->
+    <rect x="16" y="56" width="468" height="32" rx="6" fill="#FDE68A" opacity="0.5"/>
+    <text x="250" y="77" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#92400E" letter-spacing="3" font-weight="bold">PRIMED TUMOR MICROENVIRONMENT</text>
+
+    <!-- Lovastatin pill -->
+    <g transform="translate(90, 128)" filter="url(#drop)">
+      <rect x="-60" y="-20" width="120" height="40" rx="20" fill="url(#lovaGrad)" stroke="#1E40AF" stroke-width="1.5"/>
+      <text x="0" y="6" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="white" font-weight="bold">LOVASTATIN</text>
+    </g>
+
+    <!-- Action arrow: lovastatin → membrane -->
+    <path d="M90,155 Q130,195 185,237" stroke="#1D4ED8" stroke-width="2.5" fill="none" marker-end="url(#aB)"/>
+    <g transform="translate(115, 195)">
+      <rect x="-42" y="-9" width="84" height="18" rx="4" fill="white" opacity="0.85"/>
+      <text x="0" y="4" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#1D4ED8" font-weight="bold">strips cholesterol</text>
+    </g>
+
+    <!-- cGAS-STING complex (firing) -->
+    <g transform="translate(310, 120)" filter="url(#glow)">
+      <circle cx="0" cy="0" r="50" fill="url(#ifnGlow)"/>
+      <!-- cGAS star -->
+      <g transform="translate(-22, -5)">
+        <polygon points="0,-16 5,-6 16,-6 8,2 10,14 0,7 -10,14 -8,2 -16,-6 -5,-6" fill="#F97316" stroke="#EA580C" stroke-width="0.8"/>
+        <text x="0" y="2" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="white" font-weight="bold">cGAS</text>
+      </g>
+      <!-- STING star -->
+      <g transform="translate(22, 5)">
+        <polygon points="0,-14 4,-5 14,-5 7,1 9,12 0,6 -9,12 -7,1 -14,-5 -4,-5" fill="#FB923C" stroke="#EA580C" stroke-width="0.8"/>
+        <text x="0" y="2" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="white" font-weight="bold">STING</text>
+      </g>
+    </g>
+
+    <!-- IFN-β signal -->
+    <g transform="translate(410, 108)">
+      <circle cx="0" cy="0" r="20" fill="#FED7AA" stroke="#F97316" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-2" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#9A3412" font-weight="bold">IFN-β</text>
+      <text x="0" y="10" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#C2410C">signal</text>
+    </g>
+    <!-- Chemokine arrows -->
+    <line x1="430" y1="100" x2="468" y2="90" stroke="#EA580C" stroke-width="1.5" marker-end="url(#aO)" stroke-dasharray="3,2"/>
+    <text x="472" y="88" font-family="Georgia, serif" font-size="7" fill="#C2410C">CXCL10</text>
+    <line x1="430" y1="118" x2="468" y2="125" stroke="#EA580C" stroke-width="1.5" marker-end="url(#aO)" stroke-dasharray="3,2"/>
+    <text x="472" y="130" font-family="Georgia, serif" font-size="7" fill="#C2410C">CCL5</text>
+
+    <!-- mtDNA escaping upward -->
+    <path d="M220,232 C210,200 200,175 225,148" stroke="#16A34A" stroke-width="2.5" fill="none" stroke-dasharray="5,3" marker-end="url(#aG)"/>
+    <path d="M260,232 C265,195 260,170 255,148" stroke="#16A34A" stroke-width="2.5" fill="none" stroke-dasharray="5,3" marker-end="url(#aG)"/>
+    <path d="M300,232 C310,200 290,175 280,150" stroke="#16A34A" stroke-width="2.5" fill="none" stroke-dasharray="5,3" marker-end="url(#aG)"/>
+    <text x="175" y="178" font-family="Georgia, serif" font-size="9" fill="#166534" font-weight="bold">mtDNA</text>
+    <text x="175" y="190" font-family="Georgia, serif" font-size="7" fill="#22C55E">500–650 bp</text>
+
+    <!-- OMM label -->
+    <text x="250" y="222" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#166534" font-weight="bold" letter-spacing="0.5">OMM — FLUIDIZED</text>
+
+    <!-- ═══ LIPID BILAYER (fluid) ═══ -->
+    <rect x="40" y="237" width="420" height="18" rx="3" fill="url(#bilayerFluidOuter)"/>
+    <rect x="40" y="255" width="420" height="20" rx="0" fill="url(#bilayerFluidInner)"/>
+    <rect x="40" y="275" width="420" height="18" rx="3" fill="url(#bilayerFluidLower)"/>
+    <rect x="40" y="237" width="420" height="56" rx="3" fill="url(#cholSparse)" opacity="0.3"/>
+
+    <!-- Sparse lipid heads (gaps = fluid) -->
+    <g opacity="0.5">
+      <circle cx="55" cy="239" r="3.5" fill="#4ADE80"/><circle cx="73" cy="238" r="3.5" fill="#4ADE80"/>
+      <circle cx="95" cy="240" r="3.5" fill="#4ADE80"/>
+      <circle cx="120" cy="238" r="3.5" fill="#4ADE80"/>
+      <circle cx="145" cy="240" r="3.5" fill="#4ADE80"/>
+      <!-- gap at VDAC -->
+      <circle cx="370" cy="238" r="3.5" fill="#4ADE80"/>
+      <circle cx="395" cy="240" r="3.5" fill="#4ADE80"/>
+      <circle cx="420" cy="238" r="3.5" fill="#4ADE80"/>
+      <circle cx="445" cy="240" r="3.5" fill="#4ADE80"/>
+    </g>
+
+    <!-- ═══ VDAC1 OLIGOMERIC PORE ═══ -->
+    <g transform="translate(165, 232)" filter="url(#drop)">
+      <!-- Left subunit -->
+      <rect x="0" y="0" width="40" height="66" rx="6" fill="url(#vdacOpen)" stroke="#166534" stroke-width="2"/>
+      <text x="20" y="36" text-anchor="middle" font-family="Consolas, monospace" font-size="8" fill="white" font-weight="bold" transform="rotate(-90,20,36)">VDAC1</text>
+      <!-- Open pore -->
+      <rect x="46" y="4" width="78" height="58" rx="4" fill="none" stroke="#DC2626" stroke-width="3.5" stroke-dasharray="7,4"/>
+      <text x="85" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#DC2626" font-weight="bold">~4 nm</text>
+      <text x="85" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#DC2626" font-weight="bold">PORE</text>
+      <!-- Right subunit -->
+      <rect x="130" y="0" width="40" height="66" rx="6" fill="url(#vdacOpen)" stroke="#166534" stroke-width="2"/>
+      <text x="150" y="36" text-anchor="middle" font-family="Consolas, monospace" font-size="8" fill="white" font-weight="bold" transform="rotate(-90,150,36)">VDAC1</text>
+    </g>
+
+    <!-- Faded old locks (not rate-limiting anymore) -->
+    <g opacity="0.2">
+      <rect x="112" y="245" width="45" height="28" rx="4" fill="#DC2626"/>
+      <text x="134" y="264" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="white">HK-II</text>
+    </g>
+    <g opacity="0.2">
+      <rect x="345" y="245" width="45" height="28" rx="4" fill="#EA580C"/>
+      <text x="367" y="264" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="white">Bcl-xL</text>
+    </g>
+
+    <!-- Lock 3 OPEN -->
+    <g transform="translate(200, 308)" filter="url(#dropLight)">
+      <rect x="0" y="0" width="108" height="34" rx="8" fill="white" stroke="#16A34A" stroke-width="2.5"/>
+      <text x="54" y="16" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#166534" font-weight="bold">[Chol]/[CL] ↓↓</text>
+      <text x="54" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#22C55E" font-weight="bold">LOCK OPEN</text>
+      <circle cx="102" cy="8" r="9" fill="#166534"/>
+      <text x="102" y="12" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#DCFCE7" font-weight="bold">✓</text>
+    </g>
+
+    <!-- mtDNA through pore -->
+    <g transform="translate(250, 370)">
+      <ellipse cx="0" cy="0" rx="32" ry="16" fill="#F0FDF4" stroke="#16A34A" stroke-width="2"/>
+      <text x="0" y="4" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#166534" font-weight="bold">mtDNA</text>
+    </g>
+    <text x="250" y="420" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#6B7280" font-style="italic">mitochondrial matrix</text>
+
+    <!-- Mechanism box -->
+    <g transform="translate(250, 490)" filter="url(#dropLight)">
+      <rect x="-218" y="-48" width="436" height="96" rx="8" fill="white" stroke="#FCD34D" stroke-width="1"/>
+      <text x="0" y="-28" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#0F172A" font-weight="bold">Dual-Pathway Mechanism</text>
+      <line x1="-180" y1="-18" x2="180" y2="-18" stroke="#FDE68A" stroke-width="1"/>
+      <text x="0" y="-4" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#475569">Lovastatin → HMG-CoA inhibition → mevalonate ↓</text>
+      <text x="0" y="12" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#475569">(a) CoQ10 ↓ → mitochondrial ROS ↑</text>
+      <text x="0" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#475569">(b) OMM cholesterol ↓ → [Chol]/[CL] drops</text>
+      <text x="0" y="44" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#DC2626" font-weight="bold">→ VDAC1 oligomerization → mtDNA leak → cGAS-STING</text>
+    </g>
+
+    <!-- Summary -->
+    <g transform="translate(250, 620)">
+      <rect x="-200" y="-36" width="400" height="72" rx="10" fill="white" opacity="0.5"/>
+      <text x="0" y="-12" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#0F172A" font-weight="bold">Statin-Treated MSS CRC</text>
+      <text x="0" y="8" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#475569">Cholesterol lock broken. Acute mtDNA spark.</text>
+      <text x="0" y="26" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#475569" font-style="italic">TME transitions from cold to primed.</text>
+    </g>
+
+    <!-- Citation -->
+    <text x="250" y="690" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#94A3B8">Huang et al., Antioxidants (Basel) 2024 | Shen et al., eLife 2024 | Montero et al., 2008</text>
+  </g>
+
+  <!-- ═══ TRANSITION ARROW B→C ═══ -->
+  <g transform="translate(1058, 430)">
+    <rect x="-6" y="-24" width="40" height="48" rx="8" fill="#0F172A" opacity="0.08"/>
+    <polygon points="2,-16 26,0 2,16" fill="#334155" opacity="0.6"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PANEL C: BOTENSILIMAB CAVALRY
+       ═══════════════════════════════════════════════════════════ -->
+  <g transform="translate(1084, 66)">
+    <rect x="0" y="0" width="500" height="710" rx="8" fill="url(#panelCBg)" stroke="#FECACA" stroke-width="1"/>
+    <rect x="0" y="0" width="500" height="44" rx="8" fill="#7C3AED"/>
+    <rect x="0" y="22" width="500" height="22" fill="#7C3AED"/>
+    <circle cx="28" cy="22" r="13" fill="#6D28D9"/>
+    <text x="28" y="27" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="white" font-weight="bold">C</text>
+    <text x="56" y="28" font-family="Georgia, serif" font-size="14" fill="#EDE9FE" font-weight="bold">The Botensilimab Cavalry</text>
+    <text x="410" y="28" font-family="Georgia, serif" font-size="10" fill="#C4B5FD" font-style="italic">amplification</text>
+
+    <!-- Hot TME -->
+    <rect x="16" y="56" width="468" height="32" rx="6" fill="#FECACA" opacity="0.5"/>
+    <text x="250" y="77" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#991B1B" letter-spacing="3" font-weight="bold">INFLAMED TUMOR MICROENVIRONMENT</text>
+
+    <!-- Botensilimab -->
+    <g transform="translate(250, 132)" filter="url(#drop)">
+      <rect x="-90" y="-36" width="180" height="72" rx="12" fill="url(#botenGrad)" stroke="#6D28D9" stroke-width="2"/>
+      <!-- Y-shaped antibody suggestion -->
+      <line x1="-30" y1="-28" x2="0" y2="-12" stroke="white" stroke-width="2" opacity="0.3"/>
+      <line x1="30" y1="-28" x2="0" y2="-12" stroke="white" stroke-width="2" opacity="0.3"/>
+      <line x1="0" y1="-12" x2="0" y2="8" stroke="white" stroke-width="2" opacity="0.3"/>
+      <text x="0" y="-4" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="white" font-weight="bold">BOTENSILIMAB</text>
+      <text x="0" y="12" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#EDE9FE">Fc-enhanced anti-CTLA-4</text>
+      <text x="0" y="26" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#EDE9FE">+ balstilimab (anti-PD-1)</text>
+    </g>
+
+    <!-- Split into two arms -->
+    <!-- Left: Innate amplification -->
+    <path d="M175,172 C140,200 105,215 100,230" stroke="#7C3AED" stroke-width="3" fill="none" marker-end="url(#aP)"/>
+    <g transform="translate(100, 265)" filter="url(#drop)">
+      <rect x="-82" y="-28" width="164" height="56" rx="10" fill="#F97316" stroke="#C2410C" stroke-width="1.5"/>
+      <text x="0" y="-8" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="white" font-weight="bold">INNATE</text>
+      <text x="0" y="6" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="white" font-weight="bold">AMPLIFICATION</text>
+      <text x="0" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#FFF7ED">FcγRIIIA → Mφ + NK</text>
+    </g>
+
+    <!-- Right: Treg elimination -->
+    <path d="M325,172 C360,200 395,215 400,230" stroke="#7C3AED" stroke-width="3" fill="none" marker-end="url(#aP)"/>
+    <g transform="translate(400, 265)" filter="url(#drop)">
+      <rect x="-82" y="-28" width="164" height="56" rx="10" fill="#DC2626" stroke="#991B1B" stroke-width="1.5"/>
+      <text x="0" y="-8" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="white" font-weight="bold">TREG</text>
+      <text x="0" y="6" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="white" font-weight="bold">ELIMINATION</text>
+      <text x="0" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#FEF2F2">ADCC → brake removed</text>
+    </g>
+
+    <!-- Convergence -->
+    <path d="M100,300 C130,350 190,370 220,380" stroke="#1E293B" stroke-width="2.5" fill="none" marker-end="url(#aD)"/>
+    <path d="M400,300 C370,350 310,370 280,380" stroke="#1E293B" stroke-width="2.5" fill="none" marker-end="url(#aD)"/>
+
+    <!-- Activated CD8+ T cells -->
+    <g transform="translate(250, 410)" filter="url(#drop)">
+      <rect x="-110" y="-28" width="220" height="56" rx="12" fill="#1D4ED8" stroke="#1E3A8A" stroke-width="2"/>
+      <!-- Active glow -->
+      <rect x="-110" y="-28" width="220" height="56" rx="12" fill="none" stroke="#60A5FA" stroke-width="1" opacity="0.5"/>
+      <text x="0" y="-4" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="white" font-weight="bold">ACTIVATED CD8+ T CELLS</text>
+      <text x="0" y="16" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#BFDBFE">IFN-γ ↑    Granzyme B ↑    Perforin ↑</text>
+    </g>
+
+    <!-- Attack arrows (aggressive, angled) -->
+    <line x1="190" y1="442" x2="145" y2="500" stroke="#1D4ED8" stroke-width="3.5" marker-end="url(#aB)"/>
+    <line x1="250" y1="442" x2="250" y2="500" stroke="#1D4ED8" stroke-width="3.5" marker-end="url(#aB)"/>
+    <line x1="310" y1="442" x2="355" y2="500" stroke="#1D4ED8" stroke-width="3.5" marker-end="url(#aB)"/>
+
+    <!-- Dying tumor (with fragmentation energy) -->
+    <g transform="translate(250, 545)">
+      <!-- Death glow -->
+      <ellipse cx="0" cy="0" rx="140" ry="55" fill="url(#deathGlow)"/>
+      <!-- Tumor outline (breaking apart) -->
+      <ellipse cx="0" cy="0" rx="120" ry="45" fill="#FEE2E2" stroke="#F87171" stroke-width="2.5" stroke-dasharray="8,5"/>
+      <!-- Crack lines -->
+      <line x1="-50" y1="-25" x2="-80" y2="-45" stroke="#EF4444" stroke-width="1.5" opacity="0.6"/>
+      <line x1="60" y1="-20" x2="90" y2="-40" stroke="#EF4444" stroke-width="1.5" opacity="0.6"/>
+      <line x1="40" y1="25" x2="70" y2="42" stroke="#EF4444" stroke-width="1.5" opacity="0.6"/>
+      <line x1="-35" y1="22" x2="-60" y2="40" stroke="#EF4444" stroke-width="1.5" opacity="0.6"/>
+      <!-- Debris particles -->
+      <circle cx="-95" cy="-38" r="4" fill="#FECACA" opacity="0.7"/>
+      <circle cx="100" cy="-35" r="3" fill="#FECACA" opacity="0.7"/>
+      <circle cx="78" cy="40" r="5" fill="#FECACA" opacity="0.6"/>
+      <circle cx="-70" cy="38" r="3.5" fill="#FECACA" opacity="0.6"/>
+      <text x="0" y="-12" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#991B1B" font-weight="bold">MSS CRC TUMOR</text>
+      <text x="0" y="6" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#DC2626">Apoptosis + Immunogenic</text>
+      <text x="0" y="22" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#DC2626">Cell Death</text>
+    </g>
+
+    <!-- Clinical data box -->
+    <g transform="translate(250, 648)" filter="url(#dropLight)">
+      <rect x="-140" y="-34" width="280" height="80" rx="8" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+      <text x="0" y="-14" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#0F172A" font-weight="bold">Current: Boten + Balsil = 17–20% ORR</text>
+      <text x="0" y="4" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#475569">Statin + ICI meta: 20% mortality ↓ (n = 46,154)</text>
+      <text x="0" y="18" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#6B7280" font-style="italic">Liao et al., JCO Oncology Practice, 2025</text>
+      <line x1="-120" y1="26" x2="120" y2="26" stroke="#E5E7EB" stroke-width="1"/>
+      <text x="0" y="42" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#166534" font-weight="bold">Prediction: statin pre-treatment ↑↑ ORR</text>
+    </g>
+  </g>
+
+  <!-- ═══ CAPTION BAR ═══ -->
+  <rect x="0" y="795" width="1600" height="55" fill="#F8FAFC"/>
+  <line x1="40" y1="795" x2="1560" y2="795" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="800" y="818" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#475569">
+    Vasquez AJ (2026). Gate-Jamming Score framework: lovastatin targets the cholesterol/cardiolipin lock in MSS CRC, enabling VDAC1 oligomerization
+  </text>
+  <text x="800" y="835" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#475569">
+    and cGAS-STING-mediated innate immune priming, amplified by Fc-enhanced checkpoint blockade (botensilimab + balstilimab).
+  </text>
+
+</svg>
+</div>
+</body>
+</html>
