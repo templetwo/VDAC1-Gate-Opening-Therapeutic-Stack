@@ -46,8 +46,11 @@ Cancer rewrites all three terms simultaneously. Each lock requires a specific ke
 docs/
   SAD_v3_VDAC1_Gate_Opening_Stack.md    # Current version (markdown)
   SAD_v3_VDAC1_Gate_Opening_Stack.docx  # Current version (original)
-  SAD_v2_VDAC1_Gate_Opening_Stack.md    # Prior version (markdown)
-  SAD_v2_VDAC1_Gate_Opening_Stack.docx  # Prior version (original)
+  archive/
+    SAD_v2_VDAC1_Gate_Opening_Stack.md  # v2: added TSPO cautions, expanded tables
+    SAD_v2_VDAC1_Gate_Opening_Stack.docx
+    SAD_v1_VDAC1_Gate_Opening_Stack.md  # v1: original 4-experiment architecture
+    SAD_v1_VDAC1_Gate_Opening_Stack.docx
 experiments/                             # Experiment protocols & results (future)
 references/                              # Key citations & supplementary material
 figures/                                 # Diagrams & visualizations
