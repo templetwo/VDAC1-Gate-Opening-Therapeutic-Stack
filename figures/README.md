@@ -9,6 +9,7 @@ Publication-quality figures for the VDAC1 Gate-Opening Therapeutic Stack.
 | **Figure 1** | `Figure1_Gate_Opening_Sequence.pdf`, `.html` | Three-panel therapeutic sequence: (A) Triply-Locked Gate, (B) Lovastatin Opens the Gate, (C) Botensilimab Cavalry | Section 1 |
 | **Figure 2** | `Figure2_GJS_Simulation_4Panel.png` | Composite 4-panel GJS equation simulation showing multiplicative synergy in dual-lock targeting | Section 2.2 |
 | **Figure 2a** | `Figure2a_GJS_2D_Lines.png` | [Chol]/[CL] sensitivity curves across TSPO lock strengths | Section 1.1 |
+| **Figure 2b** | `Figure2b_GJS_3D_Surface.png` | 3D threshold surface: f_TSPO vs [Chol]/[CL] with steep collapse at dual-lock target | Section 2.2 |
 | **Figure 2c** | `Figure2c_GJS_Heatmap.png` | Log-scale threshold heatmap: dual-lock synergy zone | Section 2.2 |
 | **Figure 2d** | `Figure2d_GJS_Synergy_Bars.png` | Quantified synergy: single-lock vs dual-lock threshold reduction | Section 2.2 |
 | **Figure 2e** | `Figure2e_Chou_Talalay_CI.png` | Three-panel Chou-Talalay CI analysis: (A) Isobologram, (B) CI predictions, (C) Therapeutic advantage | Section 2.2 |

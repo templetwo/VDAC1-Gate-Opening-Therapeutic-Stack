@@ -6,6 +6,8 @@ Anthony J. Vasquez Sr. | Delaware Valley University | February 2026 | v4.0
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 
+**Companion work:** [CBD's Paradox at the Mitochondrial Gate](https://doi.org/10.17605/OSF.IO/NUXHV) (OSF Preprints, 2026) -- Multi-LLM convergence study of VDAC1 pharmacology (78 references)
+
 ---
 
 ## Overview
@@ -57,6 +59,7 @@ experiments/                             # Experiment protocols & results (futur
 references/                              # Key citations & supplementary material
 figures/                                 # Diagrams & visualizations
 correspondence/                          # Faculty & collaboration letters
+wiki/                                    # Documentation pages (11 topics)
 ```
 
 ## Critical Experiments
@@ -64,19 +67,18 @@ correspondence/                          # Faculty & collaboration letters
 Six experiments with explicit kill conditions are specified in the SAD. The dependency structure:
 
 ```
-AML Venetoclax ──→ Validates gate-opener physics
-                         ↓
-Exp 2a (Lovastatin) ◄────┘  ←── LINCHPIN
-Exp 2b (MβCD/CoQ10) ───┤
-                        ↓
-Exp 4 (CT26 mouse) ◄───┘
+Exp 2a (OMM cholesterol) ──→ Exp 2b (VDAC1 oligomerization)  ←── LINCHPIN
+                                       ↓
+                              Exp 3 (mtDNA → cGAS-STING)
+                                       ↓
+                              Exp 4 (CT26 mouse in vivo)
 
-Exp 1 (TSPO tether) ──→ Exp 5 (TSPO + lovastatin synergy)
+Exp 1 (TSPO tether) ──→ Exp 5 (lovastatin + PK11195 synergy)
 
-Exp 3 (CBD quarantine) ──→ CBD disposition decision
+Exp 6 (CBD disposition) ──→ CBD quarantine decision
 ```
 
-**Experiment 2a is the linchpin.** If lovastatin does not open the VDAC1 gate in CRC cells with measurable cGAS-STING activation, the statin-based architecture collapses. Four weeks. Everything depends on this result.
+**Experiment 2a/2b is the linchpin.** If lovastatin does not deplete OMM cholesterol and trigger VDAC1 oligomerization in HCT116 cells, the entire framework collapses. Four weeks. $3,010. Everything depends on this result.
 
 ## Execution Timeline (Q2&ndash;Q4 2026)
 
