@@ -5,6 +5,8 @@
 Anthony J. Vasquez Sr. | Delaware Valley University | February 2026 | v4.0
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
+[![DOI](https://img.shields.io/badge/DOI-10.17605%2FOSF.IO%2F4KNQR-blue)](https://doi.org/10.17605/OSF.IO/4KNQR)
+[![OSF](https://img.shields.io/badge/OSF-yn3dw-lightblue)](https://osf.io/yn3dw)
 
 **Companion work:** [CBD's Paradox at the Mitochondrial Gate](https://doi.org/10.17605/OSF.IO/NUXHV) (OSF Preprints, 2026) -- Multi-LLM convergence study of VDAC1 pharmacology (78 references)
 
@@ -125,6 +127,8 @@ SAD v4 includes a complete bench-ready protocol for the linchpin experiment:
          From Gate-Jamming Score to Gate-Opening Sequence},
   author={Vasquez, Anthony J., Sr.},
   year={2026},
+  doi={10.17605/OSF.IO/4KNQR},
+  url={https://osf.io/yn3dw},
   note={Strategic Architecture Document v4.0},
   institution={Delaware Valley University}
 }

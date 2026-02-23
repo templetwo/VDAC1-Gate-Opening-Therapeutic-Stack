@@ -9,6 +9,9 @@ authors:
     affiliation: "Delaware Valley University, Doylestown, PA"
 date-released: 2026-02-23
 version: "4.0"
+doi: "10.17605/OSF.IO/4KNQR"
+url: "https://osf.io/yn3dw"
+repository-code: "https://github.com/templetwo/VDAC1-Gate-Opening-Therapeutic-Stack"
 license: CC-BY-NC-4.0
 keywords:
   - VDAC1
