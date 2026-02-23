@@ -7,8 +7,8 @@ authors:
     given-names: "Anthony J."
     name-suffix: "Sr."
     affiliation: "Delaware Valley University, Doylestown, PA"
-date-released: 2026-02-22
-version: "3.0"
+date-released: 2026-02-23
+version: "4.0"
 license: CC-BY-NC-4.0
 keywords:
   - VDAC1
@@ -30,4 +30,6 @@ abstract: >-
   on statin-mediated cholesterol depletion from the outer mitochondrial
   membrane to enable VDAC1 oligomerization and mtDNA release, followed
   by botensilimab-amplified immune activation. Includes six critical
-  experiments with explicit falsification triggers.
+  experiments with explicit falsification triggers and a complete bench
+  protocol for the linchpin lovastatin experiment with reagent
+  specifications and $3,010 budget.

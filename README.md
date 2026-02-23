@@ -2,7 +2,7 @@
 
 **From Gate-Jamming Score to Gate-Opening Sequence for MSS Colorectal Cancer**
 
-Anthony J. Vasquez Sr. | Delaware Valley University | February 2026 | v3.0
+Anthony J. Vasquez Sr. | Delaware Valley University | February 2026 | v4.0
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 
@@ -10,7 +10,7 @@ Anthony J. Vasquez Sr. | Delaware Valley University | February 2026 | v3.0
 
 ## Overview
 
-Microsatellite-stable (MSS) colorectal cancer is immune-invisible. Checkpoint inhibitors that work in MSI-H tumors fail completely here. This repository contains the **Strategic Architecture Document (SAD v2)** describing a reformulated therapeutic hypothesis targeting the VDAC1 channel on the outer mitochondrial membrane.
+Microsatellite-stable (MSS) colorectal cancer is immune-invisible. Checkpoint inhibitors that work in MSI-H tumors fail completely here. This repository contains the **Strategic Architecture Document (SAD v4)** describing a reformulated therapeutic hypothesis targeting the VDAC1 channel on the outer mitochondrial membrane.
 
 The original three-phase hypothesis (TSPO inhibition &rarr; immune activation &rarr; CBD apoptosis) was **killed by its own literature review**. Three fatal contradictions were identified. What survived is mechanistically cleaner and clinically actionable:
 
@@ -44,16 +44,19 @@ Cancer rewrites all three terms simultaneously. Each lock requires a specific ke
 
 ```
 docs/
-  SAD_v3_VDAC1_Gate_Opening_Stack.md    # Current version (markdown)
-  SAD_v3_VDAC1_Gate_Opening_Stack.docx  # Current version (original)
+  SAD_v4_VDAC1_Gate_Opening_Stack.pdf   # Current version (complete bench protocol)
   archive/
+    SAD_v3_VDAC1_Gate_Opening_Stack.md  # v3: 6 experiments, reagent specs, timeline
+    SAD_v3_VDAC1_Gate_Opening_Stack.docx
     SAD_v2_VDAC1_Gate_Opening_Stack.md  # v2: added TSPO cautions, expanded tables
     SAD_v2_VDAC1_Gate_Opening_Stack.docx
     SAD_v1_VDAC1_Gate_Opening_Stack.md  # v1: original 4-experiment architecture
     SAD_v1_VDAC1_Gate_Opening_Stack.docx
+simulations/                             # GJS simulation & Chou-Talalay analysis
 experiments/                             # Experiment protocols & results (future)
 references/                              # Key citations & supplementary material
 figures/                                 # Diagrams & visualizations
+correspondence/                          # Faculty & collaboration letters
 ```
 
 ## Critical Experiments
@@ -87,10 +90,21 @@ Exp 3 (CBD quarantine) ──→ CBD disposition decision
 
 9-month sprint. Standard reagents. Single-PI compatible.
 
+## v4 Bench Protocol (Experiment 2a/2b)
+
+SAD v4 includes a complete bench-ready protocol for the linchpin experiment:
+
+- **Cell line:** HCT116 (MSS CRC, TP53-wt, ATCC CCL-247)
+- **Lovastatin activation:** Prodrug conversion via NaOH hydrolysis, neutralization, filter sterilization
+- **Readouts:** Amplex Red cholesterol quantification, filipin staining, DSS cross-linking + Western blot (VDAC1 oligomerization), qPCR cytosolic mtDNA, IFN-β ELISA
+- **Controls:** VDAC1-KO, MβCD positive control, vehicle
+- **Budget:** $3,010 | **Timeline:** 4 weeks
+- **Statistical plan:** One-way ANOVA with Tukey post-hoc, α = 0.05, n ≥ 3
+
 ## Status
 
 - [x] Literature review and falsification of original hypothesis
-- [x] Reformulated therapeutic stack architecture (SAD v3)
+- [x] Reformulated therapeutic stack architecture (SAD v4)
 - [x] Falsification triggers defined for each component
 - [x] Six critical experiments designed with kill conditions
 - [x] Complete experiment table with reagents and cell lines
@@ -109,7 +123,7 @@ Exp 3 (CBD quarantine) ──→ CBD disposition decision
          From Gate-Jamming Score to Gate-Opening Sequence},
   author={Vasquez, Anthony J., Sr.},
   year={2026},
-  note={Strategic Architecture Document v2.0},
+  note={Strategic Architecture Document v4.0},
   institution={Delaware Valley University}
 }
 ```
