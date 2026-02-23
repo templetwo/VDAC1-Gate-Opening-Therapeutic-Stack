@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use or reference this work, please cite it as below."
+title: "VDAC1 Gate-Opening Therapeutic Stack for MSS Colorectal Cancer: From Gate-Jamming Score to Gate-Opening Sequence"
+type: article
+authors:
+  - family-names: "Vasquez"
+    given-names: "Anthony J."
+    name-suffix: "Sr."
+    affiliation: "Delaware Valley University, Doylestown, PA"
+date-released: 2026-02-22
+version: "2.0"
+license: CC-BY-NC-4.0
+keywords:
+  - VDAC1
+  - colorectal cancer
+  - MSS CRC
+  - gate-jamming score
+  - lovastatin
+  - botensilimab
+  - cGAS-STING
+  - mitochondrial DNA
+  - immunotherapy
+  - therapeutic stack
+abstract: >-
+  Strategic architecture document reformulating the VDAC1 gate-opening
+  therapeutic hypothesis for microsatellite-stable colorectal cancer.
+  Three fatal contradictions in the original three-phase hypothesis
+  (TSPO inhibition, immune activation, CBD apoptosis) were identified
+  through critical literature review. The surviving architecture centers
+  on statin-mediated cholesterol depletion from the outer mitochondrial
+  membrane to enable VDAC1 oligomerization and mtDNA release, followed
+  by botensilimab-amplified immune activation. Includes six critical
+  experiments with explicit falsification triggers.
