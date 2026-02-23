@@ -2,7 +2,7 @@
 
 **From Gate-Jamming Score to Gate-Opening Sequence for MSS Colorectal Cancer**
 
-Anthony J. Vasquez Sr. | Delaware Valley University | February 2026
+Anthony J. Vasquez Sr. | Delaware Valley University | February 2026 | v3.0
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 
@@ -44,8 +44,10 @@ Cancer rewrites all three terms simultaneously. Each lock requires a specific ke
 
 ```
 docs/
-  SAD_v2_VDAC1_Gate_Opening_Stack.md    # Full document (markdown)
-  SAD_v2_VDAC1_Gate_Opening_Stack.docx  # Original document
+  SAD_v3_VDAC1_Gate_Opening_Stack.md    # Current version (markdown)
+  SAD_v3_VDAC1_Gate_Opening_Stack.docx  # Current version (original)
+  SAD_v2_VDAC1_Gate_Opening_Stack.md    # Prior version (markdown)
+  SAD_v2_VDAC1_Gate_Opening_Stack.docx  # Prior version (original)
 experiments/                             # Experiment protocols & results (future)
 references/                              # Key citations & supplementary material
 figures/                                 # Diagrams & visualizations
@@ -70,12 +72,26 @@ Exp 3 (CBD quarantine) ──→ CBD disposition decision
 
 **Experiment 2a is the linchpin.** If lovastatin does not open the VDAC1 gate in CRC cells with measurable cGAS-STING activation, the statin-based architecture collapses. Four weeks. Everything depends on this result.
 
+## Execution Timeline (Q2&ndash;Q4 2026)
+
+| Phase | Window | Goal | Deliverable |
+|-------|--------|------|-------------|
+| A | Feb&ndash;Mar 2026 | bioRxiv preprint + community feedback | Public preprint |
+| B | Apr&ndash;Jun 2026 | AML venetoclax temporal-decoupling (proves physics) | Gate-opener drug class validation |
+| C | Jul&ndash;Sep 2026 | HCT116 lovastatin Exp 2a+2b (**LINCHPIN**) | Mechanistic confirmation |
+| D | Oct&ndash;Dec 2026 | TSPO tether + synergy + CT26 mouse model | In vivo efficacy + journal submission |
+| E | Parallel w/ C | CBD disposition (Exp 3 co-culture) | Quarantine decision |
+
+9-month sprint. Standard reagents. Single-PI compatible.
+
 ## Status
 
 - [x] Literature review and falsification of original hypothesis
-- [x] Reformulated therapeutic stack architecture (SAD v2)
+- [x] Reformulated therapeutic stack architecture (SAD v3)
 - [x] Falsification triggers defined for each component
 - [x] Six critical experiments designed with kill conditions
+- [x] Complete experiment table with reagents and cell lines
+- [x] Validated support mechanisms with evidence grades
 - [ ] Phase A: Foundational preprint on bioRxiv
 - [ ] Phase B: AML venetoclax temporal-decoupling experiment
 - [ ] Phase C: HCT116 lovastatin gate-opening experiments (2a + 2b)
