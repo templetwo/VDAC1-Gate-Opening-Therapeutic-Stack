@@ -86,7 +86,7 @@ Exp 6 (CBD disposition) ──→ CBD quarantine decision
 
 | Phase | Window | Goal | Deliverable |
 |-------|--------|------|-------------|
-| A | Feb&ndash;Mar 2026 | bioRxiv preprint + community feedback | Public preprint |
+| A | Feb&ndash;Mar 2026 | OSF registration + public GitHub release | DOI: 10.17605/OSF.IO/4KNQR |
 | B | Apr&ndash;Jun 2026 | AML venetoclax temporal-decoupling (proves physics) | Gate-opener drug class validation |
 | C | Jul&ndash;Sep 2026 | HCT116 lovastatin Exp 2a+2b (**LINCHPIN**) | Mechanistic confirmation |
 | D | Oct&ndash;Dec 2026 | TSPO tether + synergy + CT26 mouse model | In vivo efficacy + journal submission |
@@ -113,7 +113,9 @@ SAD v4 includes a complete bench-ready protocol for the linchpin experiment:
 - [x] Six critical experiments designed with kill conditions
 - [x] Complete experiment table with reagents and cell lines
 - [x] Validated support mechanisms with evidence grades
-- [ ] Phase A: Foundational preprint on bioRxiv
+- [x] Complete repository with indexes, wiki, 90-reference bibliography
+- [x] OSF preregistration (DOI: 10.17605/OSF.IO/4KNQR)
+- [x] Phase A: Public release (Feb 23, 2026)
 - [ ] Phase B: AML venetoclax temporal-decoupling experiment
 - [ ] Phase C: HCT116 lovastatin gate-opening experiments (2a + 2b)
 - [ ] Phase D: TSPO exploration + CT26 mouse model
