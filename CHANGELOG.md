@@ -2,6 +2,22 @@
 
 All notable changes to the Strategic Architecture Document (SAD) and repository.
 
+## [4.1] - 2026-02-26
+
+### Added
+- Preprint DOI badge and link: [10.21203/rs.3.rs-8935902/v1](https://doi.org/10.21203/rs.3.rs-8935902/v1)
+- Transcriptomic GJS (tGJS) bridging section in README connecting biophysical GJS to TCGA proxy score
+- Preprint citation block (BibTeX) alongside existing SAD citation
+- Link to companion analysis repo ([templetwo/vdac-pharmacology-atlas](https://github.com/templetwo/vdac-pharmacology-atlas))
+- ORCID (0009-0000-6440-1506) added to CITATION.cff
+- `preferred-citation` field in CITATION.cff pointing to the preprint
+- Keywords: tGJS, innate immunity added to CITATION.cff
+- Pillow dependency added to requirements.txt (used by gjs_simulation.py)
+
+### Changed
+- Status checklist updated with preprint milestone (Feb 26, 2026)
+- Citation section now distinguishes preprint (transcriptomic evidence) from SAD (experimental architecture)
+
 ## [4.0] - 2026-02-23
 
 ### Added

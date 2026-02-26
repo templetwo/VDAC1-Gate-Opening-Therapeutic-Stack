@@ -5,8 +5,11 @@
 Anthony J. Vasquez Sr. | Delaware Valley University | February 2026 | v4.0
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
+[![Preprint](https://img.shields.io/badge/Preprint-10.21203%2Frs.3.rs--8935902%2Fv1-green)](https://doi.org/10.21203/rs.3.rs-8935902/v1)
 [![DOI](https://img.shields.io/badge/DOI-10.17605%2FOSF.IO%2F4KNQR-blue)](https://doi.org/10.17605/OSF.IO/4KNQR)
 [![OSF](https://img.shields.io/badge/OSF-yn3dw-lightblue)](https://osf.io/yn3dw)
+
+**Preprint:** [Context-Specific Innate Immune Evasion via VDAC1 Gate-Jamming in Microsatellite-Stable Colorectal Cancer](https://doi.org/10.21203/rs.3.rs-8935902/v1) (Research Square, 2026) -- Transcriptomic validation across TCGA pan-cancer (n=10,071), COADREAD MSS/TP53-wt clean room (n=209), and IMvigor210 (n=348). Analysis code and data: [templetwo/vdac-pharmacology-atlas](https://github.com/templetwo/vdac-pharmacology-atlas)
 
 **Companion work:** [CBD's Paradox at the Mitochondrial Gate](https://doi.org/10.17605/OSF.IO/NUXHV) (OSF Preprints, 2026) -- Multi-LLM convergence study of VDAC1 pharmacology (78 references)
 
@@ -33,6 +36,16 @@ $$
 $$
 
 Cancer rewrites all three terms simultaneously. Each lock requires a specific key. In MSS CRC, the rate-limiting lock is the cholesterol-to-cardiolipin ratio in the OMM lipid annulus.
+
+### Transcriptomic Proxy (tGJS)
+
+The [preprint](https://doi.org/10.21203/rs.3.rs-8935902/v1) operationalizes the biophysical GJS as a transcriptomic score for TCGA analysis:
+
+$$
+\text{tGJS} = 0.40 \times \text{norm}(HK2) + 0.30 \times \text{norm}(BCL2L1) + 0.30 \times \text{norm}(TSPO)
+$$
+
+In the MSS/TP53-wildtype COADREAD clean room (n=209), high tGJS was inversely correlated with HAVCR2/TIM-3 ($\rho$ = &minus;0.349, p = 5 &times; 10<sup>&minus;6</sup>), CXCL10, and cGAS expression (all Bonferroni-significant). The key finding: high-tGJS MSS tumors suffer from **T cell absence, not T cell exhaustion** — the innate signal never fires.
 
 ## Key Findings
 
@@ -116,6 +129,7 @@ SAD v4 includes a complete bench-ready protocol for the linchpin experiment:
 - [x] Complete repository with indexes, wiki, 90-reference bibliography
 - [x] OSF preregistration (DOI: 10.17605/OSF.IO/4KNQR)
 - [x] Phase A: Public release (Feb 23, 2026)
+- [x] Preprint posted to Research Square (Feb 26, 2026; DOI: 10.21203/rs.3.rs-8935902/v1)
 - [ ] Phase B: AML venetoclax temporal-decoupling experiment
 - [ ] Phase C: HCT116 lovastatin gate-opening experiments (2a + 2b)
 - [ ] Phase D: TSPO exploration + CT26 mouse model
@@ -123,8 +137,25 @@ SAD v4 includes a complete bench-ready protocol for the linchpin experiment:
 
 ## Citation
 
+Cite the preprint:
+
 ```bibtex
-@article{vasquez2026vdac1,
+@article{vasquez2026vdac1_preprint,
+  title={Context-Specific Innate Immune Evasion via VDAC1 Gate-Jamming
+         in Microsatellite-Stable Colorectal Cancer},
+  author={Vasquez, Anthony J.},
+  year={2026},
+  doi={10.21203/rs.3.rs-8935902/v1},
+  url={https://doi.org/10.21203/rs.3.rs-8935902/v1},
+  journal={Research Square (Preprint)},
+  institution={Delaware Valley University}
+}
+```
+
+Cite this repository (experimental architecture):
+
+```bibtex
+@article{vasquez2026vdac1_sad,
   title={VDAC1 Gate-Opening Therapeutic Stack for MSS Colorectal Cancer:
          From Gate-Jamming Score to Gate-Opening Sequence},
   author={Vasquez, Anthony J., Sr.},

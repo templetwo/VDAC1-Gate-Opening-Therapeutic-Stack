@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use or reference this work, please cite it as below."
+message: "If you use or reference this work, please cite the preprint and/or this repository."
 title: "VDAC1 Gate-Opening Therapeutic Stack for MSS Colorectal Cancer: From Gate-Jamming Score to Gate-Opening Sequence"
 type: article
 authors:
@@ -7,6 +7,7 @@ authors:
     given-names: "Anthony J."
     name-suffix: "Sr."
     affiliation: "Delaware Valley University, Doylestown, PA"
+    orcid: "https://orcid.org/0009-0000-6440-1506"
 date-released: 2026-02-23
 version: "4.0"
 doi: "10.17605/OSF.IO/4KNQR"
@@ -24,6 +25,8 @@ keywords:
   - mitochondrial DNA
   - immunotherapy
   - therapeutic stack
+  - tGJS
+  - innate immunity
 abstract: >-
   Strategic architecture document reformulating the VDAC1 gate-opening
   therapeutic hypothesis for microsatellite-stable colorectal cancer.
@@ -36,3 +39,16 @@ abstract: >-
   experiments with explicit falsification triggers and a complete bench
   protocol for the linchpin lovastatin experiment with reagent
   specifications and $3,010 budget.
+preferred-citation:
+  type: article
+  title: "Context-Specific Innate Immune Evasion via VDAC1 Gate-Jamming in Microsatellite-Stable Colorectal Cancer"
+  authors:
+    - family-names: "Vasquez"
+      given-names: "Anthony J."
+      orcid: "https://orcid.org/0009-0000-6440-1506"
+  doi: "10.21203/rs.3.rs-8935902/v1"
+  url: "https://doi.org/10.21203/rs.3.rs-8935902/v1"
+  year: 2026
+  journal: "Research Square (Preprint)"
+  institution:
+    name: "Delaware Valley University"
